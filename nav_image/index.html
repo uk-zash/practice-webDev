@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav_Image</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            /* background-color: #333;  */
+            /* color: #fff;  */
+        }
+
+        .menu ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            list-style: none;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        .menu {
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .down {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .down img {
+            width: 2rem;
+        }
+
+        .logo img {
+            width: 2rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
+
+        .image-section {
+            position: relative;
+            height: 600px; 
+            background: url('./images/cheese-burger-8770017_1280.png') no-repeat center center;
+            background-size: cover;
+            overflow: hidden; 
+        }
+
+        .image-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3); 
+            z-index: 1;
+        }
+
+        .overlay-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
+            position: absolute;
+            gap: 1rem;
+            top: 50%;
+            left: 2%;
+            transform: translateY(-50%);
+            color: #fff;
+            z-index: 2; 
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 60%; 
+        }
+
+        .overlay-text h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .overlay-text p {
+            margin: 0;
+            font-size: 1.2rem;
+            margin-top: 10px; 
+        }
+
+        .overlay-text button {
+            margin-top: 20px; 
+        }
+
+        .offers{
+            background-color: yellow;
+            padding: 10px 10px;
+            /* width: 20%; */
+            text-align: center;
+            color: black;
+            border-radius: 5px;
+        }
+
+        .burger-menu {
+            display: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .burger-menu .line {
+            border: 2px solid black;
+            width: 1.5rem;
+            height: 0.2rem;
+            transition: all 0.3s;
+        }
+
+        .burger-menu.cross .line:nth-child(1) {
+            transform: rotate(45deg);
+            position: absolute;
+            top: 0;
+        }
+
+        .burger-menu.cross .line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.cross .line:nth-child(3) {
+            transform: rotate(-45deg);
+            position: absolute;
+            bottom: 0;
+        }
+
+        @media (max-width: 1050px) {
+            .menu {
+                display: none;
+            }
+
+            nav{
+                padding: 1rem 1.3rem;
+            }
+
+            .burger-menu {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .overlay-text{
+                max-width: 100%;
+            }
+
+
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo" title="BrewBytes">
+            <img src="./images/icon.svg" alt="icon">
+            Bytes
+        </div>
+
+        
+        <div class="menu">
+            <ul>
+                <li class="down">
+                    <img src="./images/down.svg" alt="down">
+                    Menu
+                </li>
+                <li class="down">
+                    <img src="./images/down.svg" alt="down">
+                    Blog
+                </li>
+                <li class="down">
+                    <img src="./images/down.svg" alt="down">
+                    Features
+                </li>
+                <li>Pages</li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <button>Reservation</button>
+        </div>
+        <div class="burger-menu" id="burger-menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+
+    <section class="image-section">
+        <div class="overlay-text">
+            <p class="offers">30% Off</p>
+            <h1>Special Offer</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit hic voluptatibus quia eaque facilis ex ea voluptates, nostrum vero ducimus maxime quam rerum.</p>
+            <button>Order Now</button>
+        </div>
+    </section>
+
+
+    <script>
+        const menu = document.querySelectorAll(".menu");
+        document.getElementById('burger-menu').addEventListener('click', function() {
+            this.classList.toggle('cross');
+            menu.style.display("block")
+        });
+
+        
+    </script>
+</body>
+</html>
